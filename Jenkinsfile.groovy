@@ -18,6 +18,7 @@ node {
     
     //checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '.']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CREDENTIALS, url: GIT_REPO]]]
     stage "Scan"
+    sh "uname -r"
     sh "sudo yum install https://centos7.iuscommunity.org/ius-release.rpm"
     sh "sudo yum update"
     sh "sudo yum install -y python36u"
