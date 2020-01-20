@@ -19,7 +19,7 @@ node {
     //checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '.']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CREDENTIALS, url: GIT_REPO]]]
 
     stage "Build the Environment"
-    sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://test/s3.yml"
+    sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://test/s3.yml --capabilities CAPABILITY_IAM"
     /*sh "docker build -t $SCAN_REPOSITORY ."
     sh "printenv"
     stage "Send to Repository"
