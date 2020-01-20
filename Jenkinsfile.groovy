@@ -13,7 +13,7 @@ node {
     cleanWs()
     stage "Checkout Code"
     //sh "echo $SCAN_REPOSITORY"
-    sh "echo 1"
+    sh "git clone https://github.com/mkhaled93/test.git/"
     //sh "printenv"
     
     //checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '.']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CREDENTIALS, url: GIT_REPO]]]
