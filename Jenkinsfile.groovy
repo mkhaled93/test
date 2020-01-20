@@ -31,8 +31,11 @@ node {
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "chmod +x test/var.sh"
-    sh "./test/var.sh"
-    sh "echo $CFN_TEMPLATE_FILE_LOCATION"
+    script {
+        ./test/var.sh
+        echo $CFN_TEMPLATE_FILE_LOCATION
+    }
+    //sh "echo $CFN_TEMPLATE_FILE_LOCATION"
     sh "python3 scanner.py"
 
     stage "Build the Environment"
