@@ -28,7 +28,7 @@ node {
     sh "sudo curl -O https://bootstrap.pypa.io/get-pip.py"
     sh "sudo python3 get-pip.py"
     //sh "sudo su"
-    sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt"
+    sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user ec2-user"
     sh "sudo wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "sudo python3 scanner.py"
 
