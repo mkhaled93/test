@@ -11,6 +11,9 @@ import groovy.json.JsonOutput */
 node {
  
     cleanWs()
+    tools {
+        python3 'python3'
+    }
     stage "Checkout Code"
     //sh "echo $SCAN_REPOSITORY"
     sh "git clone https://github.com/mkhaled93/test.git/"
