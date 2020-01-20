@@ -33,7 +33,7 @@ node {
     sh "chmod +x test/var.sh"
     sh "./test/var.sh"
     //sh "echo $CFN_TEMPLATE_FILE_LOCATION"
-    sh "python3 scanner.py"
+    //sh "python3 scanner.py"
 
     stage "Build the Environment"
     sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://test/s3.yml --capabilities CAPABILITY_NAMED_IAM"
