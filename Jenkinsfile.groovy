@@ -32,7 +32,8 @@ node {
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "chmod +x test/var.sh"
     script {
-        ./test/var.sh
+        cd test/
+        ./var.sh
         echo $CFN_TEMPLATE_FILE_LOCATION
     }
     //sh "echo $CFN_TEMPLATE_FILE_LOCATION"
