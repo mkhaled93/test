@@ -1,0 +1,43 @@
+Resources:
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+
+  iamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: CUR-Report-Generation
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              AWS: 
+                - "arn:aws:iam::727378841472:root"
+            Action: 
+              - "sts:AssumeRole"
+      Policies:
+        - 
+         PolicyName: "CUR-Report-Generation-Policy-Access"
+         PolicyDocument:
+           Version: "2012-10-17"
+           Statement:
+              - 
+                Effect: "Allow"
+                Action: ["s3:ListBucket", "s3:GetObject"]
+                Resource: [!GetAtt s3Bucket.Arn, !Join ["", [!GetAtt s3Bucket.Arn, "/*"]]]
+
+              - Effect: "Allow"
+                Action: "cur:*"
+                Resource: "*"
+
+Outputs:
+    BucketName:
+      Description: The Name of the Bucket that has been created.
+      Value: !Ref s3Bucket
+    
+    RoleArn:
+      Description: The ARN of the Cross Account Role that has been created.
+      Value: !GetAtt iamRole.Arn
