@@ -20,6 +20,7 @@ node {
 
     stage "Build the Environment"
     sh "cd test/"
+    sh "ls -al"
     sh "aws cloudformation create-stack --stack-name myteststack --template-body file://s3.yml"
     /*sh "docker build -t $SCAN_REPOSITORY ."
     sh "printenv"
