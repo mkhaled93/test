@@ -29,8 +29,8 @@ node {
     sh "sudo python3 get-pip.py"
     //sh "sudo su"
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
-    sh "sudo wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
-    sh "sudo python3 scanner.py"
+    sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
+    sh "python3 scanner.py"
 
     stage "Build the Environment"
     sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://test/s3.yml --capabilities CAPABILITY_NAMED_IAM"
