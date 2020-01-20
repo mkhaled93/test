@@ -18,9 +18,9 @@ node {
     
     //checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '.']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CREDENTIALS, url: GIT_REPO]]]
 
-   /* stage "Build Image"
-    
-    sh "docker build -t $SCAN_REPOSITORY ."
+    stage "Build the Environment"
+    sh "aws cloudformation create-stack --stack-name myteststack --template-body file://s3.yml"
+    /*sh "docker build -t $SCAN_REPOSITORY ."
     sh "printenv"
     stage "Send to Repository"
     sh "eval \$(aws ecr get-login --no-include-email --region $AWS_REGION | sed 's|https://||')"
@@ -29,7 +29,7 @@ node {
  
  
 
-    stage "Smart Check"
+    /*stage "Smart Check"
 
      def SCAN_IMAGE="$SCAN_REGISTRY/$SCAN_REPOSITORY:$BUILD_ID"
      sh "echo $SCAN_IMAGE"
