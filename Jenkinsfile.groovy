@@ -16,6 +16,7 @@ node {
         CC_REGION = "ap-southeast-2"
         CFN_TEMPLATE_FILE_LOCATION = "https://github.com/mkhaled93/test/blob/master/s3.yml"
     }
+    sh "echo env.CC_API_KEY"
     stage "Checkout Code"
     //sh "echo $SCAN_REPOSITORY"
     sh "git clone https://github.com/mkhaled93/test.git/"
