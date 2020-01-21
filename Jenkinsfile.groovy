@@ -13,7 +13,7 @@ node {
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "python3 scanner.py"
-    artifacts: "findings.json"
+    artifacts "findings.json"
 
     stage "Build the Environment"
 
