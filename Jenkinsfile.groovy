@@ -12,7 +12,7 @@ node {
     sh "sudo python3 get-pip.py --user"
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
-    sh "python3 scanner.py >> findings.json"
+    sh "python3 scanner.py >> findings.json || true"
     //archiveArtifacts artifacts: 'findings.json', onlyIfSuccessful: false
     archiveArtifacts artifacts: 'findings.json'
 
