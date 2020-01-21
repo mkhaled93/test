@@ -7,9 +7,9 @@ node {
 
     stage "Scan"
 
-    sh "sudo yum install -y python36"
-    sh "sudo curl -O https://bootstrap.pypa.io/get-pip.py"
-    sh "sudo python3 get-pip.py --user"
+    sh "yum install -y python36"
+    sh "curl -O https://bootstrap.pypa.io/get-pip.py"
+    sh "python3 get-pip.py --user"
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "python3 scanner.py"
