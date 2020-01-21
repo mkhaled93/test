@@ -1,0 +1,10 @@
+Resources:
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      
+Outputs:
+    BucketName:
+      Description: The Name of the Bucket that has been created.
+      Value: !Ref s3Bucket
