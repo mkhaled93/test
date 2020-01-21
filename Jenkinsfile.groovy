@@ -13,6 +13,7 @@ node {
     sh "export PATH=$PATH:/var/lib/jenkins/.local/bin"
     sh "whoami"
     sh "pwd"
+    sh "ifconfig"
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "python3 scanner.py"
