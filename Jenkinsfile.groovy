@@ -8,9 +8,9 @@ node {
     stage "Scan"
 
     sh "sudo yum install -y python36"
+    sh "export PATH=$PATH:/var/lib/jenkins/.local/bin"
     sh "curl -O https://bootstrap.pypa.io/get-pip.py"
     sh "python3 get-pip.py --user"
-    sh "export PATH=$PATH:/var/lib/jenkins/.local/bin"
     sh "whoami"
     sh "pwd"
     sh "ifconfig"
