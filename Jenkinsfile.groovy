@@ -12,6 +12,7 @@ node {
     sh "sudo python3 get-pip.py --user"
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
+    archiveArtifacts artifacts: 'findings.json'
     sh "python3 scanner.py >> findings.json"
     //archiveArtifacts artifacts: 'findings.json', onlyIfSuccessful: false
 
@@ -19,11 +20,5 @@ node {
     stage "Build the Environment"
 
     sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://$CFN_TEMPLATE_FILE_LOCATION --capabilities CAPABILITY_NAMED_IAM"
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'findings.json'
-        }
-}
 }
 
