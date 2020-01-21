@@ -7,7 +7,7 @@ node {
 
     stage "Scan"
 
-    sh "sudo yum install -y python36"
+    /*sh "sudo yum install -y python36"
     
     sh "echo $PATH"
     sh "export PATH=$PATH:/var/lib/jenkins/.local/bin"
@@ -16,7 +16,7 @@ node {
     sh "python3 get-pip.py --user"
     sh "whoami"
     sh "pwd"
-    sh "ifconfig"
+    sh "ifconfig" */
     sh "pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/requirements.txt --user"
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "python3 scanner.py"
