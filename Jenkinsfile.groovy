@@ -14,9 +14,16 @@ node {
     sh "wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/code/scanner.py"
     sh "python3 scanner.py >> findings.json || true"
     //archiveArtifacts artifacts: 'findings.json', onlyIfSuccessful: false
-    archiveArtifacts artifacts: 'findings.json'
+
 
     stage "Build the Environment"
 
     sh "aws --region us-west-2 cloudformation create-stack --stack-name myteststack --template-body file://$CFN_TEMPLATE_FILE_LOCATION --capabilities CAPABILITY_NAMED_IAM"
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'findings.json'
+        }
 }
+}
+
